@@ -1,0 +1,33 @@
+[epel-playground]
+name=Extra Packages for Enterprise Linux $releasever - Playground - $basearch
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/playground/$releasever/Everything/$basearch/os
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=playground-epel$releasever&arch=$basearch&infra=$infra&content=$contentdir
+{% endif %}
+enabled=0
+gpgcheck=1
+countme=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+
+[epel-playground-debuginfo]
+name=Extra Packages for Enterprise Linux $releasever - Playground - $basearch - Debug
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/playground/$releasever/Everything/$basearch/debug
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=playground-debug-epel$releasever&arch=$basearch&infra=$infra&content=$contentdir
+{% endif %}
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+gpgcheck=1
+
+[epel-playground-source]
+name=Extra Packages for Enterprise Linux $releasever - Playground - $basearch - Source
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/playground/$releasever/Everything/source/tree/
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=playground-source-epel$releasever&arch=$basearch&infra=$infra&content=$contentdir
+{% endif %}
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+gpgcheck=1

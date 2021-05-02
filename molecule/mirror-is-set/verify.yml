@@ -1,0 +1,25 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  tasks:
+  - name: Retrieve yum repofile
+    shell: cat /etc/yum.repos.d/epel.repo
+    ignore_errors: true
+    register: repofile
+  
+  - name: metalink is not present
+    assert:
+      that:
+        - "'metalink=' not in repofile.stdout"
+
+  - name: baseurl is defined
+    assert:
+      that:
+        - "'baseurl=' in repofile.stdout"
+
+  - name: mirror is specified correctly
+    assert:
+      that:
+        - "'https://someproxyormirror.org.nz' in repofile.stdout"

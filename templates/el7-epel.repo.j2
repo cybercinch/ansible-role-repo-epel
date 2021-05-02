@@ -1,0 +1,35 @@
+[epel]
+name=Extra Packages for Enterprise Linux 7 - $basearch
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/7/$basearch
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
+{% endif %}
+failovermethod=priority
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+
+[epel-debuginfo]
+name=Extra Packages for Enterprise Linux 7 - $basearch - Debug
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/7/$basearch/debug
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-7&arch=$basearch
+{% endif %}
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgcheck=1
+
+[epel-source]
+name=Extra Packages for Enterprise Linux 7 - $basearch - Source
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/7/SRPMS
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-source-7&arch=$basearch
+{% endif %}
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgcheck=1

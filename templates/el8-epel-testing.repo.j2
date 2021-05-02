@@ -1,0 +1,33 @@
+[epel-testing]
+name=Extra Packages for Enterprise Linux $releasever - Testing - $basearch
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/testing/$releasever/Everything/$basearch
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=testing-epel$releasever&arch=$basearch&infra=$infra&content=$contentdir
+{% endif %}
+enabled=0
+gpgcheck=1
+countme=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+
+[epel-testing-debuginfo]
+name=Extra Packages for Enterprise Linux $releasever - Testing - $basearch - Debug
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/testing/$releasever/Everything/$basearch/debug
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=testing-debug-epel$releasever&arch=$basearch&infra=$infra&content=$contentdir
+{% endif %}
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+gpgcheck=1
+
+[epel-testing-source]
+name=Extra Packages for Enterprise Linux $releasever - Testing - $basearch - Source
+{% if epel_specify_mirror is sameas true %}
+baseurl={{ epel_mirror_url }}/epel/testing/$releasever/Everything/SRPMS
+{% else %}
+metalink=https://mirrors.fedoraproject.org/metalink?repo=testing-source-epel$releasever&arch=$basearch&infra=$infra&content=$contentdir
+{% endif %}
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+gpgcheck=1

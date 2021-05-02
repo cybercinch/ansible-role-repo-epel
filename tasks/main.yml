@@ -1,0 +1,29 @@
+---
+# tasks file for repo-epel
+- name: Configure Repository Settings (EL7) 
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - src: el7-epel.repo.j2
+      dest: /etc/yum.repos.d/epel.repo
+    - src: el7-epel-testing.repo.j2
+      dest: /etc/yum.repos.d/epel-testing.repo
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
+
+- name: Configure Repository Settings (EL8) 
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - src: el8-epel.repo.j2
+      dest: /etc/yum.repos.d/epel.repo
+    - src: el8-epel-modular.repo.j2
+      dest: /etc/yum.repos.d/epel-modular.repo
+    - src: el8-epel-playground.repo.j2
+      dest: /etc/yum.repos.d/epel-playground.repo
+    - src: el8-epel-testing.repo.j2
+      dest: /etc/yum.repos.d/epel-testing.repo
+    - src: el8-epel-testing-modular.repo.j2
+      dest: /etc/yum.repos.d/epel-testing-modular.repo
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "8"
