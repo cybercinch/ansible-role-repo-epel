@@ -1,7 +1,7 @@
 [epel]
 name=Extra Packages for Enterprise Linux $releasever - $basearch
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/$releasever/Everything/$basearch
+baseurl={{ epel_mirror_url }}/$releasever/Everything/$basearch
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-$releasever&arch=$basearch&infra=$infra&content=$contentdir
 {% endif %}
@@ -13,7 +13,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
 [epel-debuginfo]
 name=Extra Packages for Enterprise Linux $releasever - $basearch - Debug
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/$releasever/Everything/$basearch/debug
+baseurl={{ epel_mirror_url }}/$releasever/Everything/$basearch/debug
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-$releasever&arch=$basearch&infra=$infra&content=$contentdir
 {% endif %}
@@ -24,7 +24,7 @@ gpgcheck=1
 [epel-source]
 name=Extra Packages for Enterprise Linux $releasever - $basearch - Source
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/$releasever/Everything/SRPMS
+baseurl={{ epel_mirror_url }}/$releasever/Everything/SRPMS
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-source-$releasever&arch=$basearch&infra=$infra&content=$contentdir
 {% endif %}

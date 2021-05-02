@@ -1,4 +1,4 @@
 ---
 # defaults file for repo-epel
 epel_specify_mirror: false
-epel_mirror_url: http://download.fedoraproject.org/pub
+epel_mirror_url: http://download.fedoraproject.org/pub/epel

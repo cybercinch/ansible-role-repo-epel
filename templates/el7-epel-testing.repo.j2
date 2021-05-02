@@ -1,7 +1,7 @@
 [epel-testing]
 name=Extra Packages for Enterprise Linux 7 - Testing - $basearch
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/testing/7/$basearch
+baseurl={{ epel_mirror_url }}/testing/7/$basearch
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=testing-epel7&arch=$basearch
 {% endif %}
@@ -13,7 +13,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 [epel-testing-debuginfo]
 name=Extra Packages for Enterprise Linux 7 - Testing - $basearch - Debug
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/testing/7/$basearch/debug
+baseurl={{ epel_mirror_url }}/testing/7/$basearch/debug
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=testing-debug-epel7&arch=$basearch
 {% endif %}
@@ -25,7 +25,7 @@ gpgcheck=1
 [epel-testing-source]
 name=Extra Packages for Enterprise Linux 7 - Testing - $basearch - Source
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/testing/7/SRPMS
+baseurl={{ epel_mirror_url }}/testing/7/SRPMS
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=testing-source-epel7&arch=$basearch
 {% endif %}

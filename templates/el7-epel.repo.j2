@@ -1,7 +1,7 @@
 [epel]
 name=Extra Packages for Enterprise Linux 7 - $basearch
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/7/$basearch
+baseurl={{ epel_mirror_url }}/7/$basearch
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
 {% endif %}

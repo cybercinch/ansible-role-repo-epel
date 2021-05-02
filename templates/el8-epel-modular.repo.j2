@@ -1,7 +1,7 @@
 [epel-modular]
 name=Extra Packages for Enterprise Linux Modular $releasever - $basearch
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/$releasever/Modular/$basearch
+baseurl={{ epel_mirror_url }}/$releasever/Modular/$basearch
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-modular-$releasever&arch=$basearch&infra=$infra&content=$contentdir
 {% endif %}
@@ -13,7 +13,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
 [epel-modular-debuginfo]
 name=Extra Packages for Enterprise Linux Modular $releasever - $basearch - Debug
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/$releasever/Modular/$basearch/debug
+baseurl={{ epel_mirror_url }}/$releasever/Modular/$basearch/debug
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-modular-debug-$releasever&arch=$basearch&infra=$infra&content=$contentdir
 {% endif %}
@@ -24,7 +24,7 @@ gpgcheck=1
 [epel-modular-source]
 name=Extra Packages for Enterprise Linux Modular $releasever - $basearch - Source
 {% if epel_specify_mirror is sameas true %}
-baseurl={{ epel_mirror_url }}/epel/$releasever/Modular/SRPMS
+baseurl={{ epel_mirror_url }}/$releasever/Modular/SRPMS
 {% else %}
 metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-modular-source-$releasever&arch=$basearch&infra=$infra&content=$contentdir
 {% endif %}
