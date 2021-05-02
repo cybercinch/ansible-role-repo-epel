@@ -15,11 +15,7 @@ jobs:
     steps:
       - name: Checout Source
         uses: actions/checkout@v1
-      - name: Rename role
-        run: |
-          mv /home/runner/work/ansible-role-repo-epel/ansible-role-repo-epel \
-          /home/runner/work/ansible-role-repo-epel/repo-epel
-      - name: Set up Python 3
+      - name: Set up Python
         uses: actions/setup-python@v1
         with:
           python-version: '3.x'

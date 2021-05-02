@@ -4,4 +4,4 @@
   tasks:
     - name: "Include repo-epel"
       include_role:
-        name: "repo-epel"
+        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
