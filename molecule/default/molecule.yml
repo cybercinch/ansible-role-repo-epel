@@ -4,12 +4,9 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: centos7
-    image: docker.io/pycontribs/centos:7
+  - name: instance
+    image: docker.io/guisea/${MOLECULE_DISTRO:-centos8}:latest
     pre_build_image: true
-  - name: almalinux
-    image: docker.io/almalinux/almalinux:8
-    pre_build_image: false
 provisioner:
   name: ansible
 verifier:
