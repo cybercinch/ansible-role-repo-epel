@@ -1,5 +1,9 @@
-on: push
-name: Release
+on: 
+  push:
+    tags:
+      - '*'
+
+name: Create a new release on github
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -8,5 +12,6 @@ jobs:
         uses: Roang-zero1/github-create-release-action@master
         with:
           version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
+          update_existing: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
