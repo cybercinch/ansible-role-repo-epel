@@ -7,4 +7,4 @@
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
       vars:
         epel_specify_mirror: true
-        epel_mirror_url: https://pproxy.guise.net.nz
+        epel_mirror_url: "{{ lookup('env', 'EPEL_MIRROR_URL')"

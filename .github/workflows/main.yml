@@ -28,3 +28,4 @@ jobs:
           molecule test --all
         env:
           MOLECULE_DISTRO: ${{ matrix.molecule_distro }}
+          EPEL_MIRROR_URL: https://pproxy.guise.net.nz
