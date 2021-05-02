@@ -35,4 +35,4 @@
     
   - name: is htop actually installed?
     assert:
-      that: 'htop' in ansible_facts.packages
+      that: "'htop' in ansible_facts.packages"
