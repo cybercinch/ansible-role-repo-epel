@@ -21,3 +21,16 @@
     assert:
       that:
         - "'baseurl=' not in repofile.stdout"
+
+  - name: try to install htop from EPEL
+    package:
+      name: htop
+      state: latest
+    
+  - name: Gather the rpm package facts
+    package_facts:
+      manager: auto
+    
+  - name: is htop actually installed?
+    assert:
+      that: 'htop' in ansible_facts.packages

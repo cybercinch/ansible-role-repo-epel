@@ -23,3 +23,16 @@
     assert:
       that:
         - "'{{ lookup('env', 'EPEL_MIRROR_URL') }}' in repofile.stdout"
+
+  - name: try to install htop from EPEL
+    package:
+      name: htop
+      state: latest
+    
+  - name: Gather the rpm package facts
+    package_facts:
+      manager: auto
+    
+  - name: is htop actually installed?
+    assert:
+      that: 'htop' in ansible_facts.packages
