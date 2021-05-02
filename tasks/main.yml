@@ -1,5 +1,10 @@
 ---
 # tasks file for repo-epel
+- name: Ensure EPEL is installed
+  package:
+    name: epel-release
+    state: present
+    
 - name: Configure Repository Settings (EL7) 
   template:
     src: "{{ item.src }}"
