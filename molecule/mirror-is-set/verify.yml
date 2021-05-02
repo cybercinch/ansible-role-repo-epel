@@ -22,4 +22,4 @@
   - name: mirror is specified correctly
     assert:
       that:
-        - "{{ lookup('env', 'EPEL_MIRROR_URL') in repofile.stdout"
+        - "{{ lookup('env', 'EPEL_MIRROR_URL') }} in repofile.stdout"
