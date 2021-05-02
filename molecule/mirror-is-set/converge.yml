@@ -4,7 +4,7 @@
   tasks:
     - name: "Include repo-almalinux"
       include_role:
-        name: "repo-epel"
+        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
       vars:
         epel_specify_mirror: true
-        epel_mirror_url: https://someproxyormirror.org.nz
+        epel_mirror_url: https://pproxy.guise.net.nz
