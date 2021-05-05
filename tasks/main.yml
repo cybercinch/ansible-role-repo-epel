@@ -1,9 +1,39 @@
 ---
 # tasks file for repo-epel
-- name: Ensure EPEL is installed
-  package:
-    name: epel-release
+- name: Check if EPEL repo is already configured.
+  stat:
+    path: "{{ epel_repofile_path }}"
+  register: epel_repofile_result
+
+- name: Import EPEL GPG key.
+  rpm_key:
+    key: "{{ epel_repo_gpg_key_url }}"
     state: present
+  register: result
+  until: result is succeeded
+  retries: 5
+  delay: 10
+  when: not epel_repofile_result.stat.exists
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Install EPEL repo.
+  yum:
+    name: "{{ epel_repo_url }}"
+    state: present
+  register: result
+  until: result is succeeded
+  retries: 5
+  delay: 10
+  when: not epel_repofile_result.stat.exists
+
+- name: Disable Main EPEL repo.
+  ini_file:
+    path: "/etc/yum.repos.d/epel.repo"
+    section: epel
+    option: enabled
+    value: 0
+    mode: 0644
+  when: epel_repo_disable
     
 - name: Configure Repository Settings (EL7) 
   template:
@@ -14,7 +44,9 @@
       dest: /etc/yum.repos.d/epel.repo
     - src: el7-epel-testing.repo.j2
       dest: /etc/yum.repos.d/epel-testing.repo
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
+  when: 
+    - epel_specify_mirror
+    - ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
 
 - name: Configure Repository Settings (EL8) 
   template:
@@ -31,4 +63,6 @@
       dest: /etc/yum.repos.d/epel-testing.repo
     - src: el8-epel-testing-modular.repo.j2
       dest: /etc/yum.repos.d/epel-testing-modular.repo
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "8"
+  when: 
+    - epel_specify_mirror
+    - ansible_os_family == "RedHat" and ansible_distribution_major_version == "8"
