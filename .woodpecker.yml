@@ -11,4 +11,6 @@ steps:
       ANSIBLE_CALLBACK_WHITELIST: profile_tasks
       EPEL_MIRROR_URL: https://mirrors.guise.net.nz/epel
     commands:  
+      - molecule --version
+      - ansible --version
       - molecule test --all
