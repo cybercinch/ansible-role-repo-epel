@@ -7,6 +7,7 @@ matrix:
 steps:
   build:
     image: guisea/ansible-molecule
+    pull: true
     environment:
       ANSIBLE_CALLBACK_WHITELIST: profile_tasks
       EPEL_MIRROR_URL: https://mirrors.guise.net.nz/epel
