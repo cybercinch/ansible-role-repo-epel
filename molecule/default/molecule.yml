@@ -7,6 +7,7 @@ platforms:
   - name: instance
     image: docker.io/guisea/${MOLECULE_DISTRO:-centos8}:latest
     pre_build_image: true
+role_name_check: 2
 provisioner:
   name: ansible
 verifier:
