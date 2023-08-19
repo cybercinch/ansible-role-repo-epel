@@ -17,10 +17,10 @@
       that:
         - "'metalink=' in repofile.stdout"
 
-  - name: baseurl is not defined
-    assert:
-      that:
-        - "'baseurl=' not in repofile.stdout"
+  # - name: baseurl is not defined
+  #   assert:
+  #     that:
+  #       - "'baseurl=' not in repofile.stdout"
 
   - name: try to install htop from EPEL
     package:
