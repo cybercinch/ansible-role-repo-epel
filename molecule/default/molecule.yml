@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
+  - name: instance-${MOLECULE_DISTRO:-centos8}
     image: docker.io/guisea/${MOLECULE_DISTRO:-centos8}:latest
     pre_build_image: true
 role_name_check: 2
