@@ -1,5 +1,7 @@
 galaxy_info:
   author: your name
+  namespace: guisea
+  role_name: role-repo-epel
   description: your role description
   company: your company (optional)
 
