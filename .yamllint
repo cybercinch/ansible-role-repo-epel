@@ -1,6 +1,9 @@
 ---
 # Based on ansible-lint config
 extends: default
+skip_list:
+  - fqcn-builtins
+  - role-name
 
 rules:
   braces:
