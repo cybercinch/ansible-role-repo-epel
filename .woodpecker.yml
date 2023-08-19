@@ -1,0 +1,22 @@
+variables:
+  - &platforms 'linux/arm64/v8,linux/amd64'
+  - &docker_creds
+    username: ${CI_REPO_OWNER}
+    password:
+      from_secret: docker_password
+
+matrix:
+  molecule_distro: 
+    - centos7
+    - centos8
+    - almalinux8
+    
+steps:
+  build:
+    image: guisea/ansible-molecule
+    environment:
+      ANSIBLE_CALLBACK_WHITELIST: profile_tasks
+      MOLECULE_DISTRO: ${molecule_distro}
+      EPEL_MIRROR_URL: https://mirrors.guise.net.nz/epel
+    commands:  
+      - molecule test --all
