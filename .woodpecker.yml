@@ -1,7 +1,6 @@
 matrix:
   MOLECULE_DISTRO: 
     - centos7
-    - centos8
     - almalinux8
     
 steps:

@@ -5,15 +5,16 @@
   hosts: all
   tasks:
   - name: Retrieve yum repofile
-    shell: cat /etc/yum.repos.d/epel.repo
+    ansible.builtin.shell: cat /etc/yum.repos.d/epel.repo
     ignore_errors: true
     register: repofile
 
-  - debug:
+  - name: Output repofile
+    ansible.builtin.debug:
       var: repofile
   
-  - name: metalink is present
-    assert:
+  - name: Metalink is present
+    ansible.builtin.assert:
       that:
         - "'metalink=' in repofile.stdout"
 
@@ -22,15 +23,15 @@
   #     that:
   #       - "'baseurl=' not in repofile.stdout"
 
-  - name: try to install htop from EPEL
-    package:
+  - name: Try to install htop from EPEL
+    ansible.builtin.package:
       name: htop
-      state: latest
+      state: installed
     
   - name: Gather the rpm package facts
-    package_facts:
+    ansible.builtin.package_facts:
       manager: auto
     
-  - name: is htop actually installed?
-    assert:
+  - name: Is htop actually installed?
+    ansible.builtin.assert:
       that: "'htop' in ansible_facts.packages"
