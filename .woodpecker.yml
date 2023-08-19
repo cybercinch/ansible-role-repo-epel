@@ -9,7 +9,7 @@ steps:
     image: guisea/ansible-molecule
     environment:
       ANSIBLE_CALLBACK_WHITELIST: profile_tasks
-      MOLECULE_DISTRO: ${molecule_distro}
+      # MOLECULE_DISTRO: ${molecule_distro}
       EPEL_MIRROR_URL: https://mirrors.guise.net.nz/epel
     commands:  
       - molecule test --all
